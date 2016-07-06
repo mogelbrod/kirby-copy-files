@@ -1,6 +1,8 @@
 # kirby-copy-files
 Dashboard widget for Kirby panel that allows users to copy (clone) existing pages and files.
 
+![Screenshot](https://raw.githubusercontent.com/mogelbrod/kirby-copy-files/master/screenshot.png)
+
 Currently only auto-suggests existing pages, not files (but supports file copying as well).
 
 ## Installation
