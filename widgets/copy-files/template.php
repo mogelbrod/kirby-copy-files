@@ -2,14 +2,16 @@
 <?php
   $form = new Kirby\Panel\Form([
     'source' => [
-      'label' => 'Source (page or path)',
       'type' => 'page',
       'required' => true,
+      'label' => 'Source',
+      'placeholder' => 'Page/Folder/File URL',
     ],
     'dest' => [
-      'label' => 'Destination (must not exist)',
       'type' => 'page',
       'required' => true,
+      'label' => 'Destination (must not exist)',
+      'placeholder' => 'Destination URL',
     ]
   ], []);
   $form->on('post', function() {}); // append csrf
