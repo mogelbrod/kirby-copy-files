@@ -1,2 +1,2 @@
-# kirby-clone-page
-Clone page dashboard widget for Kirby panel
+# kirby-copy-files
+Dashboard widget for Kirby panel that allows users to copy (clone) existing pages and files.
