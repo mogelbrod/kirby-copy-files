@@ -27,6 +27,11 @@ panel()->routes([[
     $sourceUrl = stripDotSegments(get('source'));
     $destUrl = stripDotSegments(get('dest'));
 
+    $source = page($sourceUrl);
+    if ($source) {
+      $sourceUrl = $source->diruri();
+    }
+
     $sourcePath = kirby()->roots->content() . DS . $sourceUrl;
     $destPath = kirby()->roots->content() . DS . $destUrl;
 
@@ -46,7 +51,7 @@ panel()->routes([[
 
     // Response data
     $data = [];
-    if (page($sourceUrl)) {
+    if ($source) {
       $data['url'] = panel()->urls->index . "/pages/$destUrl/edit";
       panel()->notify("Page cloned");
     }
