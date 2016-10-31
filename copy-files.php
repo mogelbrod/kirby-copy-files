@@ -27,13 +27,27 @@ panel()->routes([[
     $sourceUrl = stripDotSegments(get('source'));
     $destUrl = stripDotSegments(get('dest'));
 
+    // Convert source uri to its proper path
     $source = page($sourceUrl);
     if ($source) {
       $sourceUrl = $source->diruri();
     }
 
+    // Convert existing page sub-URI of destination to its proper path,
+    // adding number prefixes where needed (ie. blog -> 4-blog)
+    $destParts = explode('/', $destUrl);
+    $destPage = site();
+    foreach ($destParts as $index => $part) {
+      $destPage = $destPage->children()->find($part);
+      if ($destPage == null) {
+        break;
+      } else {
+        $destParts[$index] = $destPage->dirname();
+      }
+    }
+
     $sourcePath = kirby()->roots->content() . DS . $sourceUrl;
-    $destPath = kirby()->roots->content() . DS . $destUrl;
+    $destPath = kirby()->roots->content() . DS . implode('/', $destParts);
 
     if (!file_exists($sourcePath)) {
       return Response::error("Source doesn't exist");
