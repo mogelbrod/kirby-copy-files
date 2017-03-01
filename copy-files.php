@@ -20,7 +20,7 @@ panel()->routes([[
   'method' => 'POST',
   'action' => function() {
     $user = site()->user()->current();
-    if (!$user || !$user->hasPermission('panel.page.create')) {
+    if (!$user || (!$user->hasPermission('panel.page.create') && !$user->isAdmin())) {
       return Response::error("Must be authenticated as user with page creation permissions");
     }
 
