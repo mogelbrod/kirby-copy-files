@@ -10,7 +10,7 @@ Currently only auto-suggests existing pages, not files (but supports file copyin
 ### Requirements
 
 -	PHP 5.4.0+
--	Kirby 2.3.0+
+-	Kirby 2.4.0+
 
 ### Kirby CLI (untested)
 
