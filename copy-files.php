@@ -25,7 +25,7 @@ panel()->routes([[
     }
 
     $sourceUrl = stripDotSegments(get('source'));
-    $destUrl = stripDotSegments(get('dest'));
+    $destUrl = preg_replace('/\s+/', '-', stripDotSegments(get('dest')));
 
     // Convert source uri to its proper path
     $source = page($sourceUrl);
