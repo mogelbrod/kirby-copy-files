@@ -35,7 +35,7 @@ panel()->routes([[
 
     // Convert existing page sub-URI of destination to its proper path,
     // adding number prefixes where needed (ie. blog -> 4-blog)
-    $destParts = explode('/', $destUrl);
+    $destParts = explode('/', trim($destUrl, '/'));
     $destPage = site();
     foreach ($destParts as $index => $part) {
       $destPage = $destPage->children()->find($part);
